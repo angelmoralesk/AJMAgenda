@@ -11,9 +11,5 @@ import UIKit
 class EventCell: UICollectionViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
-    var title : String! {
-        didSet {
-            titleLabel.text = title
-        }
-    }
+ 
 }
