@@ -12,6 +12,18 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var days : [String] = {
+        var listOfDays : [String] = []
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE"
+        for index in 1...5 {
+            let day = NSDate(timeIntervalSince1970: TimeInterval((4 * 24 * 60 * 60) + (24 * 60 * 60 * index)))
+            listOfDays.append(formatter.string(from: day as Date))
+        }
+        listOfDays.reverse()
+        return listOfDays
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,7 +35,6 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 
 }
 
@@ -43,16 +54,29 @@ extension ViewController : UICollectionViewDataSource {
         cell.backgroundColor = UIColor.red
         cell.layer.borderWidth = 2
         cell.layer.borderColor = UIColor.black.cgColor
+  
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "DayHeader", for: indexPath)
+        let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "DayHeader", for: indexPath) as! DayHeader
+        view.titleLabel.text = days[indexPath.row]
         return view
     }
     
+}
+
+extension ViewController : UICollectionViewDelegate {
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.backgroundColor = UIColor.green
+    }
     
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.backgroundColor = UIColor.clear
+    }
     
     
 }
-

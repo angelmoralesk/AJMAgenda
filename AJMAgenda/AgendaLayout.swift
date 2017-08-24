@@ -41,8 +41,8 @@ class AgendaLayout: UICollectionViewLayout {
         var attributes : [UICollectionViewLayoutAttributes] = []
         
         // get the attributes of cells
-        let result = fetchIndexPathsAndFramesForCellsInRect(rect)
-        for aResult in result {
+        let cells = fetchIndexPathsAndFramesForCellsInRect(rect)
+        for aResult in cells {
             
             let attribute = UICollectionViewLayoutAttributes(forCellWith: aResult.indexPath)
             attribute.frame = aResult.cellFrame
@@ -51,6 +51,12 @@ class AgendaLayout: UICollectionViewLayout {
         }
         
         // get the attributes of supplementary views
+        let headers = fetchIndexPathsAndFramesForHeadersInRect(rect)
+        for aResult in headers {
+            let attribute = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, with: aResult.indexPath)
+            attribute.frame = aResult.cellFrame
+            attributes.append(attribute)
+        }
         
         return attributes
         
@@ -58,6 +64,11 @@ class AgendaLayout: UICollectionViewLayout {
     
     func fetchIndexPathsAndFramesForCellsInRect(_ rect : CGRect) -> [Result] {
         var result : [Result] = []
+        
+        if rect.width.isZero || rect.height.isZero {
+            return result
+        }
+        
         var dayCounter = 0
         for i in 0..<daysPerWeek  {
             for j in 0..<daysPerWeek {
@@ -72,6 +83,22 @@ class AgendaLayout: UICollectionViewLayout {
                }
                 dayCounter += 1
             }
+        }
+        return result
+    }
+    
+    func fetchIndexPathsAndFramesForHeadersInRect(_ rect : CGRect) -> [Result] {
+        var result : [Result] = []
+        if rect.width.isZero || rect.height.isZero {
+            return result
+        }
+        
+        for i in 0..<daysPerWeek {
+            let posX = collectionView!.bounds.width - HourCell.Width - daySize.width * CGFloat(i)
+            let headerFrame = CGRect(x: posX , y: 5, width: daySize.width, height: daySize.height - 20)
+            let indexPath = IndexPath(item: i, section: 0)
+            let aResult = Result(indexPath: indexPath, cellFrame: headerFrame)
+            result.append(aResult)
         }
         return result
     }
