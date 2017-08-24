@@ -13,6 +13,10 @@
 		88CC2E7E1F4F3E890041F6F6 /* AJMAgenda.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88CC2E7C1F4F3E890041F6F6 /* AJMAgenda.xcdatamodeld */; };
 		88CC2E801F4F3E890041F6F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88CC2E7F1F4F3E890041F6F6 /* Assets.xcassets */; };
 		88CC2E831F4F3E890041F6F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88CC2E811F4F3E890041F6F6 /* LaunchScreen.storyboard */; };
+		88CC2E8B1F4F3ED20041F6F6 /* AgendaLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CC2E8A1F4F3ED20041F6F6 /* AgendaLayout.swift */; };
+		88CC2E8D1F4F3F270041F6F6 /* DayHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CC2E8C1F4F3F270041F6F6 /* DayHeader.swift */; };
+		88CC2E8F1F4F3F3C0041F6F6 /* DayHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CC2E8E1F4F3F3C0041F6F6 /* DayHeader.xib */; };
+		88CC2E911F4F3F6A0041F6F6 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CC2E901F4F3F6A0041F6F6 /* EventCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		88CC2E7F1F4F3E890041F6F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		88CC2E821F4F3E890041F6F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		88CC2E841F4F3E890041F6F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88CC2E8A1F4F3ED20041F6F6 /* AgendaLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgendaLayout.swift; sourceTree = "<group>"; };
+		88CC2E8C1F4F3F270041F6F6 /* DayHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayHeader.swift; sourceTree = "<group>"; };
+		88CC2E8E1F4F3F3C0041F6F6 /* DayHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DayHeader.xib; sourceTree = "<group>"; };
+		88CC2E901F4F3F6A0041F6F6 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +67,10 @@
 				88CC2E751F4F3E890041F6F6 /* AppDelegate.swift */,
 				88CC2E771F4F3E890041F6F6 /* ViewController.swift */,
 				88CC2E791F4F3E890041F6F6 /* Main.storyboard */,
+				88CC2E8C1F4F3F270041F6F6 /* DayHeader.swift */,
+				88CC2E901F4F3F6A0041F6F6 /* EventCell.swift */,
+				88CC2E8E1F4F3F3C0041F6F6 /* DayHeader.xib */,
+				88CC2E8A1F4F3ED20041F6F6 /* AgendaLayout.swift */,
 				88CC2E7F1F4F3E890041F6F6 /* Assets.xcassets */,
 				88CC2E811F4F3E890041F6F6 /* LaunchScreen.storyboard */,
 				88CC2E841F4F3E890041F6F6 /* Info.plist */,
@@ -128,6 +140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				88CC2E831F4F3E890041F6F6 /* LaunchScreen.storyboard in Resources */,
+				88CC2E8F1F4F3F3C0041F6F6 /* DayHeader.xib in Resources */,
 				88CC2E801F4F3E890041F6F6 /* Assets.xcassets in Resources */,
 				88CC2E7B1F4F3E890041F6F6 /* Main.storyboard in Resources */,
 			);
@@ -143,6 +156,9 @@
 				88CC2E781F4F3E890041F6F6 /* ViewController.swift in Sources */,
 				88CC2E761F4F3E890041F6F6 /* AppDelegate.swift in Sources */,
 				88CC2E7E1F4F3E890041F6F6 /* AJMAgenda.xcdatamodeld in Sources */,
+				88CC2E8D1F4F3F270041F6F6 /* DayHeader.swift in Sources */,
+				88CC2E911F4F3F6A0041F6F6 /* EventCell.swift in Sources */,
+				88CC2E8B1F4F3ED20041F6F6 /* AgendaLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
