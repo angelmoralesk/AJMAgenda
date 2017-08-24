@@ -24,12 +24,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="e0W-x6-hFU">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="AJQ-Zr-unt">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
+                                <collectionViewLayout key="collectionViewLayout" id="riz-Li-8Ol" customClass="AgendaLayout" customModule="AJMAgenda" customModuleProvider="target"/>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EventCell" id="iPQ-Tx-gSd" customClass="EventCell" customModule="AJMAgenda" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="130" height="116"/>
@@ -38,15 +33,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="130" height="116"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LxG-ZS-PMC">
-                                                    <rect key="frame" x="44" y="47" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LxG-ZS-PMC">
+                                                    <rect key="frame" x="44" y="47" width="42" height="26"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="LxG-ZS-PMC" firstAttribute="centerX" secondItem="iPQ-Tx-gSd" secondAttribute="centerX" id="AJJ-6u-zeD"/>
+                                            <constraint firstItem="LxG-ZS-PMC" firstAttribute="centerY" secondItem="iPQ-Tx-gSd" secondAttribute="centerY" constant="2" id="Jr3-qq-sFh"/>
+                                        </constraints>
                                         <size key="customSize" width="130" height="116"/>
                                         <connections>
                                             <outlet property="titleLabel" destination="LxG-ZS-PMC" id="oL1-p5-NfD"/>
