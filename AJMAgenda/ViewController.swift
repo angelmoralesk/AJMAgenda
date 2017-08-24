@@ -14,8 +14,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //collectionView.register(EventCell.self, forCellWithReuseIdentifier: "EventCell")
-        // Do any additional setup after loading the view, typically from a nib.
+
+        let headerNib = UINib(nibName: "DayHeader", bundle: nil)
+        collectionView.register(headerNib, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "DayHeader")
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,6 +44,13 @@ extension ViewController : UICollectionViewDataSource {
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "DayHeader", for: indexPath)
+        return view
+    }
+    
+    
+    
     
 }
 
@@ -52,5 +60,8 @@ extension ViewController : UICollectionViewDelegateFlowLayout {
         return CGSize(width: 300, height: 300)
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: 150, height: 150)
+    }
 }
 
