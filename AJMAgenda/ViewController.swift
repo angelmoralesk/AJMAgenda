@@ -24,6 +24,11 @@ class ViewController: UIViewController {
         return listOfDays
     }()
     
+    let hours : [String] = {
+        var temp = ["9:00", "10:00", "11:00", "12:00", "13:00"]
+        return temp.reversed()
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -64,7 +69,8 @@ extension ViewController : UICollectionViewDataSource {
         switch kind {
         case UICollectionElementKindSectionFooter:
             view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "HourHeader", for: indexPath) as! CollectionHeader
-            (view as! CollectionHeader).titleLabel.text = days[indexPath.row]
+            (view as! CollectionHeader).titleLabel.text = hours[indexPath.row]
+            (view as! CollectionHeader).backgroundColor = UIColor.yellow
             break;
         default:
            view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "DayHeader", for: indexPath) as! CollectionHeader

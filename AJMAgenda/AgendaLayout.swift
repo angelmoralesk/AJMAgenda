@@ -58,9 +58,39 @@ class AgendaLayout: UICollectionViewLayout {
             attributes.append(attribute)
         }
         
-        return attributes
+        // get the attributes of footers views
+        let footers = fetchIndexPathsAndFramesForFootersInRect(rect)
+        for aResult in footers {
+            let attribute = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, with: aResult.indexPath)
+            attribute.frame = aResult.cellFrame
+            attributes.append(attribute)
+        }
         
+        return attributes
     }
+    
+    func fetchIndexPathsAndFramesForFootersInRect(_ rect : CGRect) -> [Result] {
+        var result : [Result] = []
+        if rect.width.isZero || rect.height.isZero {
+            return result
+        }
+        var hourCounter = 0
+        for i in 0..<daysPerWeek {
+            let posX = CGFloat(5)
+            let posY = collectionView!.bounds.height - DayHeaderCell.Height - ( CGFloat(i) * daySize.height)
+            let cellFrame = CGRect(x: posX, y: posY, width: daySize.width - 20, height: daySize.height)
+            
+            if rect.contains(cellFrame.origin) {
+                let indexPath = IndexPath(row: hourCounter, section: 0)
+                let aResult = Result(indexPath: indexPath, cellFrame: cellFrame)
+                result.append(aResult)
+            }
+            hourCounter += 1
+        }
+        
+        return result
+    }
+    
     
     func fetchIndexPathsAndFramesForCellsInRect(_ rect : CGRect) -> [Result] {
         var result : [Result] = []
