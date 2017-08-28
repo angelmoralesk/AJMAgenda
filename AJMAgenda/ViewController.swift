@@ -29,6 +29,7 @@ class ViewController: UIViewController {
 
         let headerNib = UINib(nibName: "DayHeader", bundle: nil)
         collectionView.register(headerNib, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "DayHeader")
+        collectionView.register(headerNib, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "HourHeader")
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,9 +60,19 @@ extension ViewController : UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "DayHeader", for: indexPath) as! DayHeader
-        view.titleLabel.text = days[indexPath.row]
-        return view
+        var view : UICollectionReusableView?
+        switch kind {
+        case UICollectionElementKindSectionFooter:
+            view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "DayHeader", for: indexPath) as! DayHeader
+            (view as! DayHeader).titleLabel.text = days[indexPath.row]
+            break;
+        default:
+           view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "DayHeader", for: indexPath) as! DayHeader
+           (view as! DayHeader).titleLabel.text = days[indexPath.row]
+           break;
+        }
+        
+        return view!
     }
     
 }
