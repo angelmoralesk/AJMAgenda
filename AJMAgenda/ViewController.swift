@@ -11,7 +11,9 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
-    
+    var scale = CGFloat(1.0)
+    var scaleStart : CGFloat = CGFloat(0)
+
     var days : [String] = {
         var listOfDays : [String] = []
         let formatter = DateFormatter()
@@ -35,6 +37,26 @@ class ViewController: UIViewController {
         let headerNib = UINib(nibName: "CollectionHeader", bundle: nil)
         collectionView.register(headerNib, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "DayHeader")
         collectionView.register(headerNib, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "HourHeader")
+     
+        let pinchGesture = UIPinchGestureRecognizer.init(target: self, action: #selector(ViewController.didReceivePinch(gesture:)))
+        collectionView.addGestureRecognizer(pinchGesture)
+        if let layout = collectionView.collectionViewLayout as? AgendaLayout {
+            layout.delegate = self
+        }
+    }
+    
+    func didReceivePinch(gesture : UIPinchGestureRecognizer) {
+        
+        if (gesture.state == UIGestureRecognizerState.began)
+        {
+            scaleStart = self.scale
+        }
+        else if (gesture.state == UIGestureRecognizerState.changed)
+        {
+            self.scale = scaleStart * gesture.scale
+            self.collectionView.collectionViewLayout.invalidateLayout()
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -96,4 +118,12 @@ extension ViewController : UICollectionViewDelegate {
     }
     
     
+}
+
+extension ViewController : AgendaLayoutDelegate {
+    
+    func scaleForItem() -> CGFloat {
+        print("La escala es \(scale)")
+        return scale
+    }
 }

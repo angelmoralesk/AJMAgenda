@@ -21,18 +21,22 @@ struct Result  {
     let cellFrame : CGRect
 }
 
+protocol AgendaLayoutDelegate : class {
+    func scaleForItem() -> CGFloat
+}
+
 class AgendaLayout: UICollectionViewLayout {
     
     var attributes : [UICollectionViewLayoutAttributes] = []
     var daySize : CGSize = CGSize.zero
     let daysPerWeek = 5
-
+    weak var delegate : AgendaLayoutDelegate?
     
     override func prepare() {
         
         let height = (collectionView!.bounds.height - DayHeaderCell.Height) / CGFloat(daysPerWeek)
         let width = (collectionView!.bounds.width - HourCell.Width) / CGFloat(daysPerWeek)
-        daySize = CGSize(width: width, height: height)
+        daySize = CGSize(width: width * delegate!.scaleForItem(), height: height * delegate!.scaleForItem())
         
     }
     
