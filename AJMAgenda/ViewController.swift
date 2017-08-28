@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let headerNib = UINib(nibName: "DayHeader", bundle: nil)
+        let headerNib = UINib(nibName: "CollectionHeader", bundle: nil)
         collectionView.register(headerNib, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "DayHeader")
         collectionView.register(headerNib, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "HourHeader")
     }
@@ -63,12 +63,12 @@ extension ViewController : UICollectionViewDataSource {
         var view : UICollectionReusableView?
         switch kind {
         case UICollectionElementKindSectionFooter:
-            view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "DayHeader", for: indexPath) as! DayHeader
-            (view as! DayHeader).titleLabel.text = days[indexPath.row]
+            view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "HourHeader", for: indexPath) as! CollectionHeader
+            (view as! CollectionHeader).titleLabel.text = days[indexPath.row]
             break;
         default:
-           view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "DayHeader", for: indexPath) as! DayHeader
-           (view as! DayHeader).titleLabel.text = days[indexPath.row]
+           view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "DayHeader", for: indexPath) as! CollectionHeader
+           (view as! CollectionHeader).titleLabel.text = days[indexPath.row]
            break;
         }
         
