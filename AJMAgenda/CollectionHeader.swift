@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DayHeader: UICollectionReusableView {
+class CollectionHeader: UICollectionReusableView {
     
     @IBOutlet weak var titleLabel: UILabel!
 }
